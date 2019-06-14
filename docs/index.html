@@ -143,7 +143,7 @@
             Flipped: <span id="score"></span>
         </div>
         <div class="deal">
-            <div><button onclick="DealCards();" class="btn btn-sm btn-outline-light">&#8635</button></div>
+            <div><button onclick="DealCards();">&#8635</button></div>
         </div>
 
     </div>
@@ -153,27 +153,31 @@
         body {
             background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, rgb(58, 6, 71) 70%);
             color: white;
+            font-size: 3vw;
         }
 
         .gameContainer {
             padding: 15px;
-            width: 250px;
+            width: 350px;
         }
 
         .score {
             color: white;
             float: left;
+            display: inline-table;
         }
 
         .deal {
             float: right;
             color: white;
+            display: inline-table;
         }
 
         .deal button {
             background-color: transparent;
             border: 1px solid white;
             color: white;
+            font-size: 3vw;
         }
 
         #stack {
@@ -183,9 +187,9 @@
 
         #stack button {
             background-color: transparent;
-            width: 60px;
-            height: 80px;
-            font-size: 30px;
+            width: 6vw;
+            height: 8vw;
+            font-size: 3vw;
             text-align: center;
             vertical-align: middle;
             display: inline-block;
