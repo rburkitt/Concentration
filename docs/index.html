@@ -25,26 +25,26 @@
         }
 
         function flipCard(index) {
-            if (document.getElementsByTagName("button")[index].innerHTML == "") {
-                document.getElementsByTagName("button")[index].innerHTML = items[index];
+            if (document.getElementsByTagName("button")[index].getElementsByTagName("div")[0].innerHTML == "") {
+                document.getElementsByTagName("button")[index].getElementsByTagName("div")[0].innerHTML = items[index];
                 buttons[index] = items[index];
             }
             else {
-                document.getElementsByTagName("button")[index].innerHTML = "";
+                document.getElementsByTagName("button")[index].getElementsByTagName("div")[0].innerHTML = "";
                 buttons[index] = "";
             }
 
             if (document.getElementsByTagName("button")[index].innerHTML != "") {
                 for (var j = 0; j < 16; j++) {
                     if (j == index) continue;
-                    if (document.getElementsByTagName("button")[index].innerHTML == document.getElementsByTagName("button")[j].innerHTML) {
+                    if (document.getElementsByTagName("button")[index].getElementsByTagName("div")[0].innerHTML == document.getElementsByTagName("button")[j].innerHTML) {
                         document.getElementsByTagName("button")[index].disabled = true;
                         document.getElementsByTagName("button")[j].disabled = true;
                     }
                 }
             }
 
-            Flipped += document.getElementsByTagName("button")[index].innerHTML != "" ? 1 : 0;
+            Flipped += document.getElementsByTagName("button")[index].getElementsByTagName("div")[0].innerHTML != "" ? 1 : 0;
             document.getElementById("score").innerHTML = Flipped;
         }
 
@@ -79,61 +79,61 @@
             <table>
                 <tr>
                     <td>
-                        <button onclick="flipCard(0)"></button>
+                        <button onclick="flipCard(0)"><div style="display: flex;"></div></button>
                     </td>
                     <td>
-                        <button onclick="flipCard(1)"></button>
+                        <button onclick="flipCard(1)"><div style="display: flex;"></div></button>
                     </td>
                     <td>
-                        <button onclick="flipCard(2)"></button>
+                        <button onclick="flipCard(2)"><div style="display: flex;"></div></button>
                     </td>
                     <td>
-                        <button onclick="flipCard(3)"></button>
-                    </td>
-                <tr>
-
-                <tr>
-                    <td>
-                        <button onclick="flipCard(4)"></button>
-                    </td>
-                    <td>
-                        <button onclick="flipCard(5)"></button>
-                    </td>
-                    <td>
-                        <button onclick="flipCard(6)"></button>
-                    </td>
-                    <td>
-                        <button onclick="flipCard(7)"></button>
+                        <button onclick="flipCard(3)"><div style="display: flex;"></div></button>
                     </td>
                 <tr>
 
                 <tr>
                     <td>
-                        <button onclick="flipCard(8)"></button>
+                        <button onclick="flipCard(4)"><div style="display: flex;"></div></button>
                     </td>
                     <td>
-                        <button onclick="flipCard(9)"></button>
+                        <button onclick="flipCard(5)"><div style="display: flex;"></div></button>
                     </td>
                     <td>
-                        <button onclick="flipCard(10)"></button>
+                        <button onclick="flipCard(6)"><div style="display: flex;"></div></button>
                     </td>
                     <td>
-                        <button onclick="flipCard(11)"></button>
+                        <button onclick="flipCard(7)"><div style="display: flex;"></div></button>
                     </td>
                 <tr>
 
                 <tr>
                     <td>
-                        <button onclick="flipCard(12)"></button>
+                        <button onclick="flipCard(8)"><div style="display: flex;"></div></button>
                     </td>
                     <td>
-                        <button onclick="flipCard(13)"></button>
+                        <button onclick="flipCard(9)"><div style="display: flex;"></div></button>
                     </td>
                     <td>
-                        <button onclick="flipCard(14)"></button>
+                        <button onclick="flipCard(10)"><div style="display: flex;"></div></button>
                     </td>
                     <td>
-                        <button onclick="flipCard(15)"></button>
+                        <button onclick="flipCard(11)"><div style="display: flex;"></div></button>
+                    </td>
+                <tr>
+
+                <tr>
+                    <td>
+                        <button onclick="flipCard(12)"><div style="display: flex;"></div></button>
+                    </td>
+                    <td>
+                        <button onclick="flipCard(13)"><div style="display: flex;"></div></button>
+                    </td>
+                    <td>
+                        <button onclick="flipCard(14)"><div style="display: flex;"></div></button>
+                    </td>
+                    <td>
+                        <button onclick="flipCard(15)"><div style="display: flex;"></div></button>
                     </td>
                 <tr>
             </table>
