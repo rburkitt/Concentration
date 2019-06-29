@@ -3,16 +3,12 @@
 <head>
     <script>
         var emojis = ["1", "2", "3", "4", "5", "6", "7", "8", "1", "2", "3", "4", "5", "6", "7", "8"];
-
         var items = [];
         var buttons = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",]
-
         var Flipped = 0;
-
         window.onload = function (e) {
             DealCards();
         }
-
         function DealCards() {
             items = shuffle(emojis.slice());
             Flipped = 0;
@@ -23,7 +19,6 @@
                 document.getElementsByTagName("button")[j].innerHTML = "";
             }
         }
-
         function flipCard(index) {
             if (document.getElementsByTagName("button")[index].innerHTML == "") {
                 document.getElementsByTagName("button")[index].innerHTML = items[index];
@@ -33,7 +28,6 @@
                 document.getElementsByTagName("button")[index].innerHTML = "";
                 buttons[index] = "";
             }
-
             if (document.getElementsByTagName("button")[index].innerHTML != "") {
                 for (var j = 0; j < 16; j++) {
                     if (j == index) continue;
@@ -43,117 +37,58 @@
                     }
                 }
             }
-
             Flipped += document.getElementsByTagName("button")[index].innerHTML != "" ? 1 : 0;
             document.getElementById("score").innerHTML = Flipped;
         }
-
         var shuffle = function (array) {
-
             var currentIndex = array.length;
             var temporaryValue, randomIndex;
-
             // While there remain elements to shuffle...
             while (0 !== currentIndex) {
                 // Pick a remaining element...
                 randomIndex = Math.floor(Math.random() * currentIndex);
                 currentIndex -= 1;
-
                 // And swap it with the current element.
                 temporaryValue = array[currentIndex];
                 array[currentIndex] = array[randomIndex];
                 array[randomIndex] = temporaryValue;
             }
-
             return array;
-
         };
-
     </script>
 </head>
 
 <body>
 
-    <div class="container gameContainer">
+    <div class="gameContainer">
         <div id="stack">
-            <table>
-                <tr>
-                    <td>
-                        <button onclick="flipCard(0)"></button>
-                    </td>
-                    <td>
-                        <button onclick="flipCard(1)"></button>
-                    </td>
-                    <td>
-                        <button onclick="flipCard(2)"></button>
-                    </td>
-                    <td>
-                        <button onclick="flipCard(3)"></button>
-                    </td>
-                <tr>
-
-                <tr>
-                    <td>
-                        <button onclick="flipCard(4)"></button>
-                    </td>
-                    <td>
-                        <button onclick="flipCard(5)"></button>
-                    </td>
-                    <td>
-                        <button onclick="flipCard(6)"></button>
-                    </td>
-                    <td>
-                        <button onclick="flipCard(7)"></button>
-                    </td>
-                <tr>
-
-                <tr>
-                    <td>
-                        <button onclick="flipCard(8)"></button>
-                    </td>
-                    <td>
-                        <button onclick="flipCard(9)"></button>
-                    </td>
-                    <td>
-                        <button onclick="flipCard(10)"></button>
-                    </td>
-                    <td>
-                        <button onclick="flipCard(11)"></button>
-                    </td>
-                <tr>
-
-                <tr>
-                    <td>
-                        <button onclick="flipCard(12)"></button>
-                    </td>
-                    <td>
-                        <button onclick="flipCard(13)"></button>
-                    </td>
-                    <td>
-                        <button onclick="flipCard(14)"></button>
-                    </td>
-                    <td>
-                        <button onclick="flipCard(15)"></button>
-                    </td>
-                <tr>
-            </table>
-            
+        	<button onclick="flipCard(0)"></button>
+            <button onclick="flipCard(1)"></button>
+            <button onclick="flipCard(2)"></button>
+            <button onclick="flipCard(3)"></button>
+            <button onclick="flipCard(4)"></button>
+            <button onclick="flipCard(5)"></button>
+            <button onclick="flipCard(6)"></button>
+            <button onclick="flipCard(7)"></button>
+            <button onclick="flipCard(8)"></button>
+            <button onclick="flipCard(9)"></button>
+            <button onclick="flipCard(10)"></button>
+            <button onclick="flipCard(11)"></button>
+            <button onclick="flipCard(12)"></button>
+            <button onclick="flipCard(13)"></button>
+            <button onclick="flipCard(14)"></button>
+            <button onclick="flipCard(15)"></button>
         </div>
         
         <div class="bottom-bar">
-
             <div class="score">
                 Flipped: <span id="score"></span>
             </div>
             <div class="deal">
-                <div><button onclick="DealCards();">&#8635</button></div>
+                <button onclick="DealCards();">&#8635</button>
             </div>
-            
          </div>
-
     </div>
-
-
     <style>
         body {
             background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, rgb(58, 6, 71) 70%);
@@ -163,20 +98,18 @@
 
         .gameContainer {
             padding: 15px;
-            width: 350px;
+            width: 250px;
             margin: auto;
         }
 
         .score {
             color: white;
             float: left;
-            display: inline-table;
         }
 
         .deal {
-            float: right;
             color: white;
-            display: inline-table;
+			float: right;
         }
 
         .deal button {
@@ -190,11 +123,20 @@
             align-content: center;
             width: 100%;
             margin: auto;  
+			display: grid;
+  			grid-template-columns: repeat(4, 1fr);
+  			grid-gap: 5px;
+  			padding: 5px;
         }
         
         .bottom-bar {
             align-content: center;
-            width: 70%;
+            width: 100%;
+			margin: auto;
+			display: grid;
+  			grid-template-columns: 2fr 1fr;
+  			grid-gap: 20px;
+			padding: 20px;
         }
 
         #stack button {
