@@ -20,24 +20,26 @@
             }
         }
         function flipCard(index) {
-            if (document.getElementsByTagName("button")[index].innerHTML == "") {
-                document.getElementsByTagName("button")[index].innerHTML = items[index];
+			var button = document.getElementsByTagName("button")[index];
+            if (button.innerHTML == "") {
+                button.innerHTML = items[index];
                 buttons[index] = items[index];
             }
             else {
-                document.getElementsByTagName("button")[index].innerHTML = "";
+                button.innerHTML = "";
                 buttons[index] = "";
             }
-            if (document.getElementsByTagName("button")[index].innerHTML != "") {
+            if (button.innerHTML != "") {
                 for (var j = 0; j < 16; j++) {
                     if (j == index) continue;
-                    if (document.getElementsByTagName("button")[index].innerHTML == document.getElementsByTagName("button")[j].innerHTML) {
-                        document.getElementsByTagName("button")[index].disabled = true;
-                        document.getElementsByTagName("button")[j].disabled = true;
+					var jbutton = document.getElementsByTagName("button")[j];
+                    if (button.innerHTML == jbutton.innerHTML) {
+                        button.disabled = true;
+                        jbutton.disabled = true;
                     }
                 }
             }
-            Flipped += document.getElementsByTagName("button")[index].innerHTML != "" ? 1 : 0;
+            Flipped += button.innerHTML != "" ? 1 : 0;
             document.getElementById("score").innerHTML = Flipped;
         }
         var shuffle = function (array) {
@@ -91,73 +93,81 @@
     </div>
     <style>
         body {
-            background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, rgb(58, 6, 71) 70%);
-            color: white;
-            font-size: 3vw;
-        }
-
-        .gameContainer {
-            padding: 15px;
-            width: 500px;
-            margin: auto;
-        }
-
-        .score {
-            color: white;
-            float: left;
-        }
-
-        .deal {
-            color: white;
-			float: right;
-        }
-
-        .deal button {
-            background-color: transparent;
-            border: 1px solid white;
-            color: white;
-            font-size: 2vw;
-        }
-
-        #stack {
-            align-content: center;
-            width: 100%;
-            margin: auto;  
-			display: grid;
-  			grid-template-columns: repeat(4, 1fr);
-  			grid-gap: 5px;
-  			padding: 0px;
-        }
-        
-        .bottom-bar {
-            align-content: center;
-            width: 100%;
-			margin: auto;
-			display: grid;
-  			grid-template-columns: 2fr 1fr;
-  			grid-gap: 20px;
-			padding: 20px;
-        }
-
-        #stack button {
-            background-color: transparent;
-            width: 12vw;
-            height: 14vw;
-            font-size:7vw;
-            text-align: center;
-            vertical-align: middle;
-            display: inline-flex;
-            justify-content: center;
-            border: 1px solid white;
-            color: white;
-        }
-
-        #stack button:disabled,
-        #stack button[disabled] {
-            border: 1px solid #999999;
-            background-color: #cccccc;
-            color: #666666;
-        }
+        background: linear-gradient(180deg, rgb(5, 39, 103) 0%, rgb(58, 6, 71) 70%) fixed;
+        color: white;
+    }
+ 
+    .gameContainer {
+        padding: 15px;
+        width: 250px;
+        margin: auto;
+    }
+ 
+    .score {
+        color: white;
+        float: left;
+    }
+ 
+    .deal {
+        color: white;
+        float: right;
+    }
+ 
+    .deal button {
+        background-color: transparent;
+        text-align: center;
+        vertical-align: middle;
+        display: inline-flex;
+        justify-content: center;
+        border: 1px solid white;
+        color: white;
+ 
+        padding: .25rem .5rem;
+        font-size: .875rem;
+        line-height: 1.5;
+        border-radius: .2rem;
+    }
+ 
+    #stack {
+        align-content: center;
+        width: 100%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 5px;
+        padding: 5px;
+    }
+ 
+    .bottom-bar {
+        align-content: center;
+        width: 100%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-gap: 20px;
+        padding: 20px;
+    }
+ 
+    #stack button {
+        background-color: transparent;
+        width: 60px;
+        height: 80px;
+        font-size: 30px;
+        text-align: center;
+        vertical-align: middle;
+        display: inline-flex;
+        justify-content: center;
+        border: 1px solid white;
+        color: white;
+        border-radius: .2rem;
+    }
+ 
+    #stack button:disabled,
+    #stack button[disabled] {
+        border: 1px solid #999999;
+        background-color: #cccccc;
+        color: #666666;
+    }
     </style>
 
 </body>
