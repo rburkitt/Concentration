@@ -1,7 +1,7 @@
 
 {
-  "name": "Blazor Concentration",
-  "short_name": "Concentration",
+  "name": "Blazor Concentration 2",
+  "short_name": "Concentration 2",
   "icons": [
     {
       "src": "icons/icon-192x192.png",
@@ -14,7 +14,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/BlazorApplication2/",
+  "start_url": "/Concentration/",
   "display": "standalone",
   "background_color": "#3a0647",
   "theme_color": "#052767"
