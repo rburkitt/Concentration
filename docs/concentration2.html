@@ -59,6 +59,14 @@
             }
             return array;
         };
+	    
+	if ('serviceWorker' in navigator) {
+            console.log('Registering service worker now');
+            navigator.serviceWorker.register('./serviceworker.js')
+                .then(function () {
+                    console.log('Service Worker Registered');
+                });
+        }
     </script>
 </head>
 
