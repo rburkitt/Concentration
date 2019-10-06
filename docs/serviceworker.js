@@ -1,7 +1,8 @@
 var CACHE_NAME = 'static-cache';
 var urlsToCache = [
   '.',
-  'index.html'
+  'index.html',
+  'concentration2.html'
 ];
 self.addEventListener('install', function(event) {
   event.waitUntil(
