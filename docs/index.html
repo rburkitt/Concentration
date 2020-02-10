@@ -32,14 +32,19 @@
 		buttons[index] = "";
 	    }
 	    if (document.getElementsByTagName("button")[index].innerHTML != "") {
-		for (var j = 0; j < 16; j++) {
+		/*for (var j = 0; j < 16; j++) {
 		    if (j == index)
 			continue;
 		    if (document.getElementsByTagName("button")[index].innerHTML == document.getElementsByTagName("button")[j].innerHTML) {
 			document.getElementsByTagName("button")[index].disabled = true;
 			document.getElementsByTagName("button")[j].disabled = true;
 		    }
-		}
+		}*/
+		places.filter(j => document.getElementsByTagName("button")[j].innerHTML == document.getElementsByTagName("button")[index].innerHTML)
+		    .forEach(function (j) {
+			document.getElementsByTagName("button")[index].disabled = true;
+			document.getElementsByTagName("button")[j].disabled = true;
+		    });
 	    }
 	    Flipped += document.getElementsByTagName("button")[index].innerHTML != "" ? 1 : 0;
 	    document.getElementById("score").innerHTML = Flipped.toString();
