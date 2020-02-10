@@ -4,67 +4,68 @@
     <link rel="manifest" href="manifest.json">
     <link rel="script" href="serviceworker.js">
     <script>
-        var emojis = ["1", "2", "3", "4", "5", "6", "7", "8", "1", "2", "3", "4", "5", "6", "7", "8"];
-        var items = [];
-        var buttons = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",]
-        var Flipped = 0;
-        window.onload = function (e) {
-            DealCards();
-        }
-        function DealCards() {
-            items = shuffle(emojis.slice());
-            Flipped = 0;
-            document.getElementById("score").innerHTML = Flipped;
-            for (var j = 0; j < 16; j++) {
-                buttons[j] = "";
-                document.getElementsByTagName("button")[j].disabled = false;
-                document.getElementsByTagName("button")[j].innerHTML = "";
-            }
-        }
-        function flipCard(index) {
-            if (document.getElementsByTagName("button")[index].innerHTML == "") {
-                document.getElementsByTagName("button")[index].innerHTML = items[index];
-                buttons[index] = items[index];
-            }
-            else {
-                document.getElementsByTagName("button")[index].innerHTML = "";
-                buttons[index] = "";
-            }
-            if (document.getElementsByTagName("button")[index].innerHTML != "") {
-                for (var j = 0; j < 16; j++) {
-                    if (j == index) continue;
-                    if (document.getElementsByTagName("button")[index].innerHTML == document.getElementsByTagName("button")[j].innerHTML) {
-                        document.getElementsByTagName("button")[index].disabled = true;
-                        document.getElementsByTagName("button")[j].disabled = true;
-                    }
-                }
-            }
-            Flipped += document.getElementsByTagName("button")[index].innerHTML != "" ? 1 : 0;
-            document.getElementById("score").innerHTML = Flipped;
-        }
-        var shuffle = function (array) {
-            var currentIndex = array.length;
-            var temporaryValue, randomIndex;
-            // While there remain elements to shuffle...
-            while (0 !== currentIndex) {
-                // Pick a remaining element...
-                randomIndex = Math.floor(Math.random() * currentIndex);
-                currentIndex -= 1;
-                // And swap it with the current element.
-                temporaryValue = array[currentIndex];
-                array[currentIndex] = array[randomIndex];
-                array[randomIndex] = temporaryValue;
-            }
-            return array;
-        };
-	    
+        "use strict";
+	let emojis = ["1", "2", "3", "4", "5", "6", "7", "8", "1", "2", "3", "4", "5", "6", "7", "8"];
+	var items = [];
+	var buttons = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",];
+	var Flipped = 0;
+	window.onload = function () {
+	    DealCards();
+	};
+	function DealCards() {
+	    items = shuffle(emojis.slice());
+	    Flipped = 0;
+	    document.getElementById("score").innerHTML = Flipped.toString();
+	    for (var j = 0; j < 16; j++) {
+		buttons[j] = "";
+		document.getElementsByTagName("button")[j].disabled = false;
+		document.getElementsByTagName("button")[j].innerHTML = "";
+	    }
+	}
+	function flipCard(index) {
+	    if (document.getElementsByTagName("button")[index].innerHTML == "") {
+		document.getElementsByTagName("button")[index].innerHTML = items[index];
+		buttons[index] = items[index];
+	    }
+	    else {
+		document.getElementsByTagName("button")[index].innerHTML = "";
+		buttons[index] = "";
+	    }
+	    if (document.getElementsByTagName("button")[index].innerHTML != "") {
+		for (var j = 0; j < 16; j++) {
+		    if (j == index)
+			continue;
+		    if (document.getElementsByTagName("button")[index].innerHTML == document.getElementsByTagName("button")[j].innerHTML) {
+			document.getElementsByTagName("button")[index].disabled = true;
+			document.getElementsByTagName("button")[j].disabled = true;
+		    }
+		}
+	    }
+	    Flipped += document.getElementsByTagName("button")[index].innerHTML != "" ? 1 : 0;
+	    document.getElementById("score").innerHTML = Flipped.toString();
+	}
+	var shuffle = function (array) {
+	    var currentIndex = array.length;
+	    var temporaryValue, randomIndex;
+	    // While there remain elements to shuffle...
+	    while (0 !== currentIndex) {
+		// Pick a remaining element...
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex -= 1;
+		// And swap it with the current element.
+		temporaryValue = array[currentIndex];
+		array[currentIndex] = array[randomIndex];
+		array[randomIndex] = temporaryValue;
+	    }
+	    return array;
+	};
 	if ('serviceWorker' in navigator) {
-            console.log('Registering service worker now');
-            navigator.serviceWorker.register('./serviceworker.js')
-                .then(function () {
-                    console.log('Service Worker Registered');
-                });
-        }
+	    console.log('Registering service worker now');
+	    navigator.serviceWorker.register('./serviceworker.js')
+		.then(function () {
+		console.log('Service Worker Registered');
+	    });
+	}
     </script>
 </head>
 
